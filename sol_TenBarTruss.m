@@ -18,4 +18,8 @@ for z = 1:10
     c(z) = (coordinate(node(z,2),1) - coordinate(node(z,1),1)) / L(z);
     s(z) = (coordinate(node(z,2),2) - coordinate(node(z,1),2)) / L(z);
 end
-T = [node,E,A,L,c,s]
+T = [node,E,A,L,c,s];
+
+K = zeros(12,12);
+
+K = add_element(K, A, E, L, c, s, node)
