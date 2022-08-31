@@ -1,3 +1,4 @@
+function [sigma, Q] = sol_TenBarTruss(r1, r2)
 % ﹚竡把计计
 coordinate = [18.28, 9.14; 18.28, 0; 9.14, 9.14;...
     9.14, 0; 0, 9.14; 0, 0];
@@ -5,8 +6,6 @@ node = [3, 5; 1, 3; 4, 6; 2, 4; 3, 4;...
     1, 2; 4, 5; 3, 6; 2, 3; 1, 4];
 E = 200 * 10^9 * ones(10,1);
 
-r1 = 0.1;
-r2 = 0.05;
 r = [r1; r1; r1; r1; r1; r1; r2; r2; r2; r2];
 A = pi * r.^2;
 
@@ -41,9 +40,10 @@ K(9:12, :) = [];
 K(:,9:12) = [];
 Q = K \ F_matrix;
 Q(9:12,:) = 0;
-
 % 璸衡莱 (stress) (ㄏノ compute_stress ㄧ计)
 sigma = compute_stress(Q, E, L, c, s, node);
+end
+
 
 
 
