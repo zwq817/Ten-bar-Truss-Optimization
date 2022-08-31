@@ -1,5 +1,5 @@
 function [Sigma, Sigmaeq] = nonlcon(r)
-sigmay = 250 * 10^6;
+sigmay = 250 * 10^6; % 降伏應力
 [sigma, Q] = sol_TenBarTruss(r(1), r(2));
 
 % 各桿件應力的絕對值小於等於降伏應力
